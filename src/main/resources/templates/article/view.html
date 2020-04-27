@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/simple-head :: simple-head}">
+<body>
+<div class="container">
+    <h2>View Article</h2>
+    <div th:object="${article}">
+        <div class="table-responsive-md">
+            <table class="table table-striped">
+                <thead class="thead">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Author</th>
+                    <th>Text</th>
+                    <th>Publication Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td th:text="*{id}"></td>
+                    <td th:text="*{title}"></td>
+                    <td th:text="*{author}"></td>
+                    <td th:text="*{text}"></td>
+                    <td th:text="*{#temporals.format(publishedAt, 'dd MMMM yyyy HH:mm')}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="form-row">
+            <a class="btn btn-outline-secondary" th:href="*{'/articles/update/' + id}">Edit</a>
+            <form action="#" th:action="@{'/articles/{id}'(id=*{id})}" th:method="delete">
+                <input class="btn btn-outline-danger" type="submit" value="Delete" />
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

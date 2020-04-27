@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/simple-head :: simple-head}">
+<body>
+<div class="container row">
+    <a class="btn btn-outline-primary" th:href="@{/articles}">Articles</a>
+    <a class="btn btn-outline-info" th:href="@{/articles/create}">Create</a>
+    <form class="form-inline" th:action="@{/articles/search}" th:method="get">
+        <div class="form-group mx-sm-3 mb-2">
+            <label for="find-by-author" class="sr-only">Author's Name</label>
+            <input type="text" class="form-control" id="find-by-author" name="name">
+        </div>
+        <button type="submit" class="btn btn-outline-primary">Find By Author</button>
+    </form>
+</div>
+</body>
+</html>
